@@ -1,6 +1,6 @@
 angular.module('makeitso.home', [])
 
-	.controller('homeController', function($scope, $http){
+	.controller('homeController', function($scope, $http) {
 		//scope.data MUST be an array for the $index functionality to work in the home.html form.
 		$scope.data = [];
 
@@ -22,8 +22,7 @@ angular.module('makeitso.home', [])
 		}	
 
 		$scope.values = {};
-		$scope.contribute = function(username, amount, id){
-			console.log('contribute running!')
+		$scope.contribute = function(username, amount, id){			
 			$scope.values.username = username;
 			$scope.values.amount = amount;
 			$scope.values.project_id = id;
@@ -49,7 +48,6 @@ angular.module('makeitso.home', [])
 		//It needs to + projectId in the url to delete the selected project.
 		$scope.remove = {};
 		$scope.claim = function(projectId){
-			console.log('claim running')
 			$scope.remove.projectId = projectId;
 			var stringifiedRemove = JSON.stringify($scope.remove);
 			console.log('this is stringifiedRemove:', stringifiedRemove);
@@ -63,6 +61,7 @@ angular.module('makeitso.home', [])
 				console.log('project is deleted!',response);
 				//call to getBounties below refreshes the info on 
 				//the page to remove the deleted project from the list.
+				
 				$scope.getBounties();
 			})
 			.catch(function(error){
@@ -71,7 +70,7 @@ angular.module('makeitso.home', [])
 		}
 
 		$scope.stripe = function(projectId){
-		console.log('stripe callsed')			
+			console.log('stripe called!')		
 			var amount = $('.amountInput').val();
 			var username = $('.userInput').val();			
 
@@ -100,9 +99,6 @@ angular.module('makeitso.home', [])
 			window.addEventListener('popstate', function() {
 			  handler.close();
 			});
-
-
 		}
 
-	})
-
+});

@@ -1,6 +1,6 @@
 var db = require('../db/index.js');
-var User = require('./userModel.js');
-var Project = require('./projectModel.js');
+var User = require('./user.js');
+var Project = require('./project.js');
 
 
 var Pledge = db.Model.extend({

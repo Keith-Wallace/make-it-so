@@ -1,0 +1,69 @@
+<div ng-controller="formController">
+
+
+   <div class="container">
+      <!-- TOP OF PAGE CLASS BELOW ADJUSTS THE FONT IN CSS
+           FEEL FREE TO CHANGE IT BACK IF YOU PREFER THE OTHER FONT
+       -->
+      <h1 class="topOfPage">Create a Bounty!</h1>
+   <div>
+ <!-- the novalidate stops the browser from imposing any built-in validation -->
+ <!-- the pure-form and pure-form-aligned tags and fieldset tags are what give the form its pretty formating -->
+ <!-- below is the html code that makes up the bounty submission form -->
+   <form class="bountyForm pure-form pure-form-aligned" id="submitForm" ng-submit="submit(user)" novalidate>
+   <fieldset>
+
+   <div class="pure-control-group">
+   <label class="leftLabel" for="Name">Username: </label> 
+   <input type="text" id="name" ng-model="user.username" placeholder="Username"/>
+   </div>
+   <!-- ng-model is used to save the data from what the user puts in the form fields -->
+   <!-- We took this email section out, because we currently don't have any place in our database for it. -->
+
+<!--    <div class="pure-control-group">
+   <label class="leftLabel" for="email">Email: </label> 
+   <input type="text" id="email" ng-model="user.email" placeholder="Email"/>
+   </div> -->
+
+   <div class="pure-control-group">
+   <label class="leftLabel" for="ProjectName">Project Name: </label> 
+   <input type="text" id="ProjectName" ng-model="user.projectName" placeholder="Project Name"/>
+   </div>
+
+
+   <div class="pure-control-group">
+   <label class="leftLabel" for="wanted">Wanted: </label> 
+   <input type="text" id="Wanted" ng-model="user.wanted" placeholder="Wanted"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label class="leftLabel" for="descripton">Description: </label> 
+   <input type="text" id="descripton" ng-model="user.description" placeholder="Description"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label class="leftLabel" for="timeConstraint">Time Constraint: </label> 
+   <input type="date" id="timeConstraint" ng-model="user.timeConstraint" placeholder="Time Constraint"/>
+   </div>
+   
+   <div class="pure-control-group">
+   <label class="leftLabel" for="pledge">Pledge: </label> 
+   <input type="number" id="pledge" ng-model="user.pledge" placeholder="Pledge"/>
+   </div>
+   
+   <br/> <!-- the formatting is a bit janky. we put a break here, only because we thought it looked best, but you may find a better way. submit button below -->
+   <button type="submit" id="makeitso-button">
+       Make It Crow!
+   </button>
+   </fieldset>
+ </form>
+  
+  
+   <script src="jquery.js"></script>
+
+
+</div>
+</div>
+</div>
+ </body>
+</html>

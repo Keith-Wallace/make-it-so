@@ -1,0 +1,52 @@
+<div ng-controller='homeController' ng-init="getBounties()">
+	
+	<div class="container clearfix">
+		
+		<!-- LEFT: BOUNTY LIST -->
+		<div class="bounty-list">
+			<h2 class="topOfPage">Current Bounties</h2>
+			<div class="columns clearfix" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
+				<a id="{{bounties.id}}"></a>
+				<div class="bounty-details">
+					<ul>
+						<li class="b-title">{{bounties.name}}</li>
+						<li class="b-wanted">WANTED: {{bounties.wanted}}</li>
+						<li class="b-descr">{{bounties.description}}</li>
+						<li class="b-duration">BOUNTY EXPIRES: {{bounties.timeConstraint | date:'longDate'}}</li>
+					</ul>
+				</div> 
+
+				<div class="bounty-controls">
+					<form>
+						<input type="text" class = "userInput" ng-model="username[$index]" placeholder="Username">
+						<input type="text" class = "amountInput" ng-model="amount[$index]" placeholder="Amount">
+						
+						<!-- STRIPE -->
+						<button class="customButton" type="click" ng-click="stripe(bounties.id)">
+						STRIPE PAY
+						</button>
+						<!-- STRIPE -->
+
+						<button type="click" ng-click="contribute(username[$index], amount[$index], bounties.id)">CONTRIBUTE!</button>
+
+						<div class="total-cont">
+							{{bounties.amount | currency:"$ ":0}}
+						</div>
+
+						<button class="bountyBtn" type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+						<!-- <button type='click' id='bountyBtn1'>PLAY!</button> -->
+
+					</form>
+						<script src="jquery.js"></script>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- RIGHT: WIDGETS -->
+		<div ui-view="widgets" class="widget-list"></div>
+		<!-- <a class="twitter-timeline" href="https://twitter.com/MakeItCrow">Tweets by MakeItCrow</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+	</div>
+	
+</div>

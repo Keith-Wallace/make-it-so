@@ -1,28 +1,62 @@
 <!DOCTYPE html>
-<html ng-app='makeitso'>
+<html ng-app="makeitso">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Makeit.so</title>
+    <!-- the first link is how we brought Bootstrap into your project -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- this second link is for bringing in 'pure' styling for our forms, which makes them look pretty and aligned -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/forms-min.css">
+    <!-- this third link references out style sheet -->
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <!-- this fourth link references the fonts we got from google, megrim and raleway -->
+    <link href="https://fonts.googleapis.com/css?family=Megrim|Raleway|PT+Sans" rel="stylesheet">
   </head>
   <body>
-    <h1>Makeit.so</h1>
-    <a href="#/home">appear</a>
-
-    <ul>
+    
+    <header>
+      <!-- logo image -->
+      <h1 id="title"><a href="/">Makeit.Crow</a></h1>
+      <img src="https://img14.deviantart.net/665d/i/2008/356/2/7/crow_by_duffzilla.jpg" alt="Mountain View" style="width:80px;height:100px;">
+      
+      <!--  nav bar as list, the  -->
+      <ul>
         <li><a href="#/form">Create a Bounty</a></li>
         <li><a href="#/home">Current Bounties</a></li>
-        <li style="float:right"><a class="active" href="#about">About</a></li>
+        <!-- ng-model searchbar: can search bounties because of the piping in home.html's ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar"> 
+        the '| filter:searchbar' is what makes the bounties searchable-->
+        <li id="searchbar">
+          <img id="mag" src="/assets/search-12-24.png"/>
+          <input ng-model="searchbar">
+        </li>
       </ul>
-
-
+    </header>
+    
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
-      
+    <!-- <div ng-view></div> -->
+    <div ui-view></div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script> 
-    <script src="//code.angularjs.org/1.2.1/angular-route.min.js"></script>
-    <script src="/app/app.js"></script>
+    <!-- SCRIPTS -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <!-- load angular, angular-route, jquery, bootstrap, and our app and home controllers -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <!-- ANGULAR UI-ROUTER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <!-- <script src="//code.angularjs.org/1.2.1/angular-route.min.js"></script> -->
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/controllers/widgetsController.js"></script>
+    <script src="app/controllers/formController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app.js"></script>
+    <script src="jquery.js"></script>
+    <script>
+      $(window).on('load', function () {
+        $.getScript('https://platform.twitter.com/widgets.js');
+      });
+    </script>
 
   </body>
 </html>

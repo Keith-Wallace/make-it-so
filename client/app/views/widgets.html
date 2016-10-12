@@ -1,0 +1,21 @@
+<div ng-controller="widgetsController">
+<h3>BOUNTY WATCH</h3>
+  <div class="bounty-watch">
+    <ol>
+      <a href="" ng-click="goToBounty( bountyItem.id )" ng-repeat="bountyItem in data.topBounties">
+        <li>
+          <span>{{bountyItem.name}}</span>
+          $ {{bountyItem.total}}
+        </li>
+      </a>
+    </ol>
+  </div>
+
+  <h3>LATEST BOUNTIES</h3>
+
+  <div class="bounty-twitter">
+    <a class="twitter-timeline" href="https://twitter.com/MakeItCrow" data-height="500">Tweets by MakeItCrow</a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</div>
+
